@@ -1,18 +1,36 @@
 // Estas rutas van a hacer para manejar un usuario
 
 const { Router } = require('express');
+const { check } = require('express-validator'); 
+const validarCampos = require('../middlewares/validar-campos');
+const { esRoleValido, emailExiste, existeUsuarioById } = require('../helpers/db-validators');
 const { usuariosGet, usuariosPost, usuariosPut, usuariosDelete } = require('../controllers/usuariosControler');
+
 
 const router = Router();
 
 router.get('/', usuariosGet);
 
-router.put('/:id', usuariosPut);
+router.put('/:id',[
+    check('id', 'No es un ID válido').isMongoId().bail().custom(existeUsuarioById),
+    check('rol').custom( (rol) => esRoleValido(rol) ),
+    validarCampos
+] ,usuariosPut);
 
-router.post('/', usuariosPost);
+router.post('/',[  
+    check('correo','Este correo no es valido').isEmail(), 
+    check('correo').custom( (correo) => emailExiste(correo) ),
+    check('nombre','El Nombre es obligatorio').not().isEmpty(), 
+    check('password','La contrasena es obligatoria y debe contener mas de 6 letras').isLength( {min:6} ),
+    check('rol').custom( (rol) => esRoleValido(rol) ), 
+    validarCampos 
+] ,usuariosPost); 
 
 
-router.delete('/', usuariosDelete);
+router.delete('/:id', [
+    check('id', 'No es un ID válido').isMongoId().bail().custom(existeUsuarioById),
+    validarCampos
+], usuariosDelete);
 
 
 module.exports = router;

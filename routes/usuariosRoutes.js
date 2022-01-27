@@ -2,9 +2,14 @@
 
 const { Router } = require('express');
 const { check } = require('express-validator'); 
+
 const validarCampos = require('../middlewares/validar-campos');
+const { validarJWT } = require('../middlewares/validar-jwt');
+const { rolAdmin, tieneRole } = require('../middlewares/validar-roles');
+
 const { esRoleValido, emailExiste, existeUsuarioById } = require('../helpers/db-validators');
 const { usuariosGet, usuariosPost, usuariosPut, usuariosDelete } = require('../controllers/usuariosControler');
+
 
 
 const router = Router();
@@ -28,6 +33,9 @@ router.post('/',[
 
 
 router.delete('/:id', [
+    validarJWT,
+    //rolAdmin,este middelware fuerza a que solo el usuario con rol de administrador pueda borrar usuarios
+    tieneRole('ADMIN_ROL', 'VENTAS_ROL'),
     check('id', 'No es un ID válido').isMongoId().bail().custom(existeUsuarioById),
     validarCampos
 ], usuariosDelete);

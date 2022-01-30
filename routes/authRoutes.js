@@ -1,3 +1,5 @@
+// Estas rutas van a hacer para manejar la autenticacion por google
+
 const { Router } = require('express');
 const { check } = require('express-validator');
 

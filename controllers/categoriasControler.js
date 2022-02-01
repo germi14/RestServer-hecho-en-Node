@@ -1,9 +1,10 @@
+//Controlador para la ruta Categorias
+
 const { response, request } = require('express');
 const Categoria = require("../models/categoria");
 
 
   // obtenerCategorias
-
 const obtenerCategorias = async (req = request, res= response) => {
 
     const { limite = 5, desde = 0 } = req.query;
@@ -20,10 +21,7 @@ const obtenerCategorias = async (req = request, res= response) => {
     });
 };
 
-
-
  // obtenerCategoria
-
  const obtenerCategoria = async (req = request, res= response) =>{
 
     const {id} = req.params;
@@ -34,7 +32,6 @@ const obtenerCategorias = async (req = request, res= response) => {
  }
 
  // Crear Cateogria
-
 const crearCategoria = async (req=request, res= response)=> {
 
     const nombre = req.body.nombre.toUpperCase();  
@@ -65,7 +62,6 @@ const crearCategoria = async (req=request, res= response)=> {
 
 
 // actualizarCategoria
-
 const actualizarCategoria = async(req=request, res= response) =>{
     
     const {id} = req.params;
@@ -82,7 +78,6 @@ const actualizarCategoria = async(req=request, res= response) =>{
 
 
 // borrarCategoria  - cambiar estado a false
-
 const borrarCategoria = async (req = request, res= response) =>{
 
     const {id} = req.params;
@@ -91,8 +86,6 @@ const borrarCategoria = async (req = request, res= response) =>{
     res.json({
         'La categoria borrada fue': cateogriaBorrada}
         );
-
-
 }
 
 

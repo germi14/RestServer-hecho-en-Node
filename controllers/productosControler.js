@@ -1,9 +1,10 @@
+//Controlador para la ruta Productos
+
 const { response, request } = require('express');
 const Producto = require("../models/producto");
 
 
   // obtenerProductos 
-
 const obtenerProductos = async (req = request, res= response) => {
 
     const { limite = 5, desde = 0 } = req.query;
@@ -20,10 +21,7 @@ const obtenerProductos = async (req = request, res= response) => {
     });
 };
 
-
-
  // obtenerProduco 
-
  const obtenerProducto = async (req = request, res= response) =>{
 
     const {id} = req.params;
@@ -34,7 +32,6 @@ const obtenerProductos = async (req = request, res= response) => {
  }
 
  // Crear Producto
-
 const crearProducto = async (req=request, res= response)=> {
 
     const {estado, usuario, ...body} =  req.body;
@@ -71,7 +68,6 @@ const crearProducto = async (req=request, res= response)=> {
 
 
 // actualizarProducto
-
 const actualizarProducto = async(req=request, res= response) =>{
     
     const {id} = req.params;
@@ -90,7 +86,6 @@ const actualizarProducto = async(req=request, res= response) =>{
 
 
 // borrarProducto  - cambiar estado a false
-
 const borrarProducto = async (req = request, res= response) =>{
 
     const {id} = req.params;
@@ -99,8 +94,6 @@ const borrarProducto = async (req = request, res= response) =>{
     res.json({
         'La categoria borrada fue': productoBorrado}
         );
-
-
 }
 
 

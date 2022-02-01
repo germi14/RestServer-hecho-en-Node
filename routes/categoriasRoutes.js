@@ -1,4 +1,4 @@
-// Estas rutas van a hacer para manejar las categorias
+// Estas rutas son para manejar las categorias
 
 const { Router } = require('express');
 const { check } = require('express-validator');

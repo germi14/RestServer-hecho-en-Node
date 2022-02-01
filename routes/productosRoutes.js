@@ -1,4 +1,4 @@
-// Estas rutas van a hacer para manejar los productos
+// Estas rutas son para manejar los productos
 
 const { Router } = require('express');
 const { check } = require('express-validator');

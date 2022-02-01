@@ -1,3 +1,5 @@
+//Modelo de los usuarios que trabajan en la cafeteria
+// La base de datos fue hecha en mongoDB
 
 const { Schema, model} = require('mongoose');
 

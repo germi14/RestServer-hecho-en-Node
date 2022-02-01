@@ -4,4 +4,7 @@ node_modules/
 
 MismosArchivosConComentarios/
 
+uploads/archivos-de-productos/**.*
+uploads/archivos-de-usuarios/**.*
+
 .env

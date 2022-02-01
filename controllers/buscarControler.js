@@ -1,3 +1,5 @@
+//Controlador para la ruta de busqueda de usuarios, categorias o productos
+
 const { response, request } = require('express');
 
 const {ObjectId} = require('mongoose').Types;
@@ -7,14 +9,14 @@ const  Categoria = require('../models/categoria');
 const  Producto  = require('../models/producto');
 
 
-
+// Al agregar mas colecciones a la BD anadirlas aca
 const coleccionesPermitidas = [
     'usuarios',
     'categorias',
     'productos'
 ];
 
-
+// Controlador para la ruta buscar Usuario, Se utiliza en este mismo codigo mas abajo en un switch
 const buscarUsuarios = async (termino= '', res= response) =>{
 
     const esMongoId = ObjectId.isValid(termino);
@@ -46,6 +48,7 @@ const buscarUsuarios = async (termino= '', res= response) =>{
 
 }
 
+// Controlador para la ruta buscar Categorias, Se utiliza en este mismo codigo mas abajo en un switch
 const buscarCategorias = async (termino= '', res= response) =>{
 
     const esMongoId = ObjectId.isValid(termino);
@@ -70,6 +73,8 @@ const buscarCategorias = async (termino= '', res= response) =>{
     });
 
 }
+
+// Controlador para la ruta buscar Productos, Se utiliza en este mismo codigo mas abajo en un switch
 
 const buscarProductos = async (termino= '', res= response) =>{
 
@@ -96,7 +101,7 @@ const buscarProductos = async (termino= '', res= response) =>{
 
 }
 
-const buscar = async (req = request, res= response) => {
+const buscar = async (req = request, res= response) => { // Este como tal es el controlador que escoge cual controlador particular utilizar dependiendo de la coleccion de BD escogida
 
     const { coleccion, termino } = req.params;
 

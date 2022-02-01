@@ -1,3 +1,5 @@
+////Este middelware es para validar si el JWT generado es valido
+
 const { response, request } = require('express');
 const jwt = require('jsonwebtoken');
 

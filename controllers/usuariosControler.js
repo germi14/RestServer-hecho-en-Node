@@ -1,10 +1,12 @@
+//Controlador para la ruta usuarios
+
 const { response, request } = require('express'); 
 
 const bcryptjs = require('bcryptjs');
 
 const Usuario = require('../models/usuario');
 
-
+//Controlador para la ruta de obtener usuarios
 const usuariosGet = async (req = request, res= response) => {
 
     const { limite = 5, desde = 0 } = req.query;
@@ -21,9 +23,8 @@ const usuariosGet = async (req = request, res= response) => {
     });
 };
 
+//Controlador de la ruta para crear usuarios
 const usuariosPost = async (req, res= response) => {
-
-
 
     const {nombre, correo, password, rol} = req.body;
 
@@ -42,6 +43,7 @@ const usuariosPost = async (req, res= response) => {
     });
 };
 
+//Controlador para la ruta actualizar usuarios
 const usuariosPut = async (req, res= response) => {
 
     const {id} = req.params;
@@ -61,6 +63,7 @@ const usuariosPut = async (req, res= response) => {
     res.json(usuario);
 };
 
+//Controlador para la ruta borrar usuarios
 const usuariosDelete = async (req, res= response) => {
 
     const {id} = req.params;
@@ -69,7 +72,6 @@ const usuariosDelete = async (req, res= response) => {
 
     res.json(usuario);
 };
-
 
 module.exports = {
     usuariosGet,

@@ -1,4 +1,4 @@
-// Estas rutas van a hacer para manejar las busquedas
+// Estas rutas son para manejar las busquedas de usuarios, de categorias y de productos
 
 const { Router } = require('express');
 const { buscar } = require('../controllers/buscarControler');

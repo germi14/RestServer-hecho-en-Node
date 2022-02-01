@@ -1,5 +1,8 @@
+//middelware para validar si el rol enviado es valido y se encuentra dentro de los roles definidos en la BD
+
 const { request, response } = require("express");
 
+//Validar si el rol es de tipo Administrador
 const rolAdmin = (req = request, res= response, next) => {
 
     if(!req.usuario){
@@ -17,6 +20,8 @@ const rolAdmin = (req = request, res= response, next) => {
     }
     next();
 }
+
+//Validar si el rol pertenece a los definidos en la base de datos
 
 const tieneRole = (...roles) => {
     
@@ -36,11 +41,7 @@ const tieneRole = (...roles) => {
 
         next();
     }
-
 }
-
-
-
 
 module.exports = {
     rolAdmin,

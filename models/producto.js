@@ -1,3 +1,5 @@
+//Modelo de las productos de la cafeteria, los cuales pertenecen a una categoria definida en la misma BD
+// La base de datos fue hecha en mongoDB
 
 const { Schema, model } = require('mongoose');
 
@@ -17,6 +19,9 @@ const ProductoSchema = Schema({
         type: Schema.Types.ObjectId,
         ref: 'Usuario',
         required: true
+    },
+    img:{
+        type: String
     },
     precio: {
         type: Number,

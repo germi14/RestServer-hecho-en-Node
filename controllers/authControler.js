@@ -1,6 +1,7 @@
+//Controlador para la autenticacion de Google
+
 const bcryptjs = require('bcryptjs');
 const { response, request } = require('express');
-const { DefaultTransporter } = require('google-auth-library');
 const { generarJWT } = require('../helpers/generarJWT');
 const { googleVerify } = require('../helpers/google-verify');
 const Usuario = require('../models/usuario');
